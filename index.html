@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Vue and CF</title>
+        <!--- <script src="https://cdn.dwolla.com/1/dwolla.js"></script> --->
+        <script src="./assets/js/vue.min.js"></script>
+        <script src="./assets/js/vuerouter.js"></script>
+        <script src="./assets/js/vueloader.min.js"></script>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js" integrity="sha512-WFN04846sdKMIP5LKNphMaWzU7YpMyCU245etK3g/2ARYbPK9Ub18eG+ljU96qKRCWh+quCY7yefSmlkQw1ANQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+         <link rel="icon" type="image/x-icon" href="favicon.ico">
+    </head>
+    <body>
+        <div id="app" class="container">
+            <div>Powered by Vue <strong>{{version}}</strong></div>
+            <router-view></router-view>
+        </div>
+        <script src="./src/root/script.js"></script>
+        <!--- <cfoutput>
+            <cfhttp result="result" method="GET" charset="utf-8" url="https://corona-api.com/countries/IN"></cfhttp>
+            <cfscript>
+                function formatChange(any value) {
+                    var val = abs(arguments.value);
+                    if (val >= 10000000) {
+                        val = numberFormat(val / 10000000,'__.00') & ' Cr';
+                    } else if (val >= 100000) {
+                        val = numberFormat(val / 100000,'__.00') & ' Lac';
+                    } else if (val >= 1000) {
+                        val = numberFormat(val / 1000,'__.00') & ' K';
+                    } 
+                    return val;
+                }
+            </cfscript>
+            <cfif isJSON(result.Filecontent)>
+                <cfset res = deserializeJSON(result.Filecontent)>
+                <cfif structKeyExists(res,'data') AND structKeyExists(res.data,'timeline')>
+                <cfset columns = [ { label:"Row",key:""}, { label:"Date",key:"date"}, { label:"Deaths",key:"deaths"}, { label:"Confirmed",key:"confirmed"}, { label:"Recovered",key:"recovered"}, { label: "New Confirmed", key:"new_confirmed"}, { label: "New Recovered", key:"new_recovered"}, { label: "New Deaths", key:"new_deaths"}, { label: "Active", key:"active"}]>
+                <div class="container">
+                    <h2 class="text-center">Statistics Table Coldfusion</h2>
+                    <table class="table table-hover table-striped ">
+                        <thead>
+                            <tr>
+                                <cfloop array="#columns#" index="item">
+                                    <th>#item.label#</th>
+                                </cfloop>
+                            </tr>
+                        </thead>
+
+                        <cftimer label="Execution time" type="inline">
+                            <cfset count = 1>
+                            <cfloop array="#res.data.timeline#" index="item">
+                                <tr>
+                                    <td>#count#</td>
+                                    <td>#item.date#</td>
+                                    <td>#formatChange(item.deaths)#</td>
+                                    <td>#formatChange(item.confirmed)#</td>
+                                    <td>#formatChange(item.recovered)#</td>
+                                    <td>#formatChange(item.new_confirmed)#</td>
+                                    <td>#formatChange(item.new_recovered)#</td>
+                                    <td>#formatChange(item.new_deaths)#</td>
+                                    <td>#formatChange(item.active)#</td>
+                                </tr>
+                                <cfset count++>
+                            </cfloop>
+                        </cftimer>
+                    </table>
+                </div>
+                </cfif>
+            </cfif>
+        </cfoutput> --->
+    </body>
+</html>
+
